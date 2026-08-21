@@ -98,10 +98,10 @@ This indcates recall for **high_risk class is very low(0.3)**. Even the accuracy
 
 Following algorithms compared with Base Model
 
-        **1. RandomForest**
-        **2. XGBoost Classifier**
-        **3. LogisticRegression**
-        **4. Neural network**
+        1. RandomForest
+        2. XGBoost Classifier
+        3. LogisticRegression
+        4. Neural network
 
 
 - Create WEIGHTED_SAMPLE_CLASS to handle - HIGH_RISK(most imbalanced class in dataset) & LOW_RISK (moderately imbalance). This is necessary to handle class imbalance found in  EDA phase  
@@ -255,15 +255,24 @@ This Metrics are close to LogisticRegression/XGBoost  but NOT better. So **Neura
 1. Based on the above analysis and results for this UseCase
 
 Considering the following factors
+
         a. Overall performance (train/test time)
+
         b. Metrics (Recall, F1-score, Precision, Confusion Metrix, ROC-AUC)
+
         c. Robustness in feature selection/utilization
+
         d. Misclassification rate
+
         e. Consistent precision/Recall balance across different THRESHOLDs 
 
+
  My vote 
+
             I. **Choice 1 - XGBOOST (Can be productionized )**
+
             II. Choice 2 - LogisticRegression (Can be used as baseline model for further analysis)
+
 2. To improve model's Recall score for high_risk/low_risk keep threshold between 0.3 to 0.4. 
 
 # Next steps
