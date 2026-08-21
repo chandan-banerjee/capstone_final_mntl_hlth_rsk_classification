@@ -279,6 +279,12 @@ Actionable Items :
 
 # Outline of project
 
+- Main note book link : https://github.com/chandan-banerjee/capstone_final_mntl_hlth_rsk_classification/blob/main/src/analysis_with_feature_engg.ipynb
+- Neural Network notebook link : https://github.com/chandan-banerjee/capstone_final_mntl_hlth_rsk_classification/blob/main/src/analysis_with_feature_engg_NeuralNetwork.ipynb
+- Test unseen data notebook link : https://github.com/chandan-banerjee/capstone_final_mntl_hlth_rsk_classification/blob/main/src/TestSavedModel.ipynb
+- Python script used to generate synthetic data : https://github.com/chandan-banerjee/capstone_final_mntl_hlth_rsk_classification/blob/main/src/src_synthetic_data/generate_synthetic_mental_health.py
+
+
 ## Repository Structure
 
 ```text
