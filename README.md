@@ -301,7 +301,7 @@ Actionable Items :
 ├── saved_model/                    # Hyperparameter tuned model files saved for any future reference
 ├── data/                           # Source datafiles(Kaggel) for analysis/modeling  & Unseen synthetic data for testing the model  
 ├── src/                            # Notebooks: 1. (EDA + Base models + RandomForest+XGBoost) 2. Test saved models with unseen synthetic data 3. Neural Network
-│   ├── src_synthetic_data/         # One python(.py)-Generate synthetic data 
+│   ├── src_synthetic_data_code/         # One python(.py)-Generate synthetic data 
 └── README.md       # Project overview
 ```
 
@@ -309,4 +309,5 @@ Actionable Items :
 
 # Contact and Further Information
 
-Will be filled up later during final submission
+Author  : Chandan Banerjee
+Email   : banerjichandan@gmail.com
