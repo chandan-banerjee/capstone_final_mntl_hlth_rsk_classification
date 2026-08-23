@@ -82,15 +82,15 @@ To find initial base model I used four classification algorithms, namely Logisti
 
 **LogisticRegression Classification Report(Base Model): without class weight**
 
-              precision    recall  f1-score   support
+                                precision    recall  f1-score   support
 
-    Low Risk       0.64      0.58      0.61      1871
- Medium Risk       0.57      0.71      0.63      2365
-   High Risk       0.65      0.30      0.41       764
+                    Low Risk       0.64      0.58      0.61      1871
+                    Medium Risk    0.57      0.71      0.63      2365
+                    High Risk      0.65      0.30      0.41       764
 
-    accuracy                           0.60      5000
-   macro avg       0.62      0.53      0.55      5000
-weighted avg       0.61      0.60      0.59      5000
+                    accuracy                           0.60      5000
+                    macro avg      0.62      0.53      0.55      5000
+                    weighted avg   0.61      0.60      0.59      5000
 
 This indcates recall for **high_risk class is very low(0.3)**. Even the accuracy score is 0.6. For this Use Case I need to improve the recall score
 
