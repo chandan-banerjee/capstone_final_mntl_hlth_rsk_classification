@@ -6,31 +6,31 @@
 
 # Executive summary
 
-1. This project develops an interpretable machine learning framework that evaluates clinical and behavioral data to predict the risk of mental health conditions. By identifying high-risk individuals early, this tool empowers clinicians and patients to implement proactive, personalized interventions before acute crises occur
+1. This project develops an interpretable machine learning framework that evaluates clinical and behavioral data to predict the risk of mental health conditions. Early identification of risk levels (specially high_risk) of each individual is important & this tool empowers clinicians and patients to implement proactive, personalized interventions before acute crisis occurs.
 
-2. At the sametime this framework should NOT miss any low/medium RISK patients who can develop mental illness in future
+2. At the sametime, the goal of this framework is to maximize identifying low/medium RISK patients who can develop mental illness in future.
 
-3. Evaluation Metrics: Evaluated primarily on Recall, F1-Score, and AUC-ROC to minimize false negatives( MAXIMIZE recall ) and ensure maximum safety in medical triage.
+3. Evaluation Metrics: Evaluated primarily on Recall, F1-Score, precision and AUC-ROC to minimize false negatives( MAXIMIZE recall ) and ensure maximum safety in medical triage.
 
 4. Mental Risk Prediction is a **multi-class classification** Use Case where a patient can be categorized as 'Low Risk', 'Medium Risk' or 'High Risk' depending on their socioeconomic factors , clinical factors & past treatment/medical history.
 
 # Rationale
 
 
-1. **For Patients:** Shifts the focus toward prevention rather than just symptom management. Early risk detection allows individuals to seek support before conditions escalate, improving long-term quality of life
+1. **For Patients:** Shifts the focus toward prevention rather than just symptom management. Early risk detection allows individuals to seek support before conditions escalate, improving long-term quality of life.
 
-2. **For Clinicians:** Acts as a powerful clinical decision-support tool. By automatically analyzing vast datasets like Electronic Health Records, algorithms help doctors identify subtle warning signs that might be missed during brief routine checkups
+2. **For Clinicians:** Acts as a powerful clinical decision-support tool. By automatically analyzing vast datasets like Electronic Health Records, the algorithms help doctors identify subtle warning signs that might be missed during brief routine checkups.
 
 3. Identifying mental illness risk via machine learning transforms psychiatric care from reactive to proactive.
 
 # Research Question
 
 
-    - How can I identify and predict Mental Health Risk factors which is a serious global challenge ? 
-    - The  conditions like  Anxiety and Depression are the most common disorders globally and saw a massive surge in prevalence over the past three decades
+    - How can I identify and predict Mental Health Risk factors which is a serious global challenge? 
+    - How can I help doctors and physicians with a proven, data-driven mental health risk identification process? Conditions like Anxiety and Depression are the most common disorders globally and saw a massive surge in prevalence over the past three decades.
 
 # Data Sources
-What data will you use to answer you question?
+What data will you use to answer your question?
 
     - I used Kaggle data source: https://www.kaggle.com/datasets/guriya79/mental-health-disorder
 
@@ -46,7 +46,7 @@ I will use following techniques:
     5. Encoding input features
     6. Different multi-class classification algorithm comparison
     7. ROC-AUC analysis
-    8. Precision, Recall & F1 score comparison  to identify which algorithm produces better results for this Use Case.
+    8. Precision, Recall & F1 score comparison to identify which algorithm produces better results for this Use Case.
 
 # Findings / Results
 
@@ -54,15 +54,15 @@ I will use following techniques:
 
 **Phase - EDA**
 
-    - This UseCase is on mental illness. I don't see any missing medical/clinical information for each patient in the given dataset. This is good in one way that I don'tneed to  use mean/median/mode or any other technique to fill-in the NULLS. The mdeical/clinical fators are very specific to a person, should not be generalized. 
-    - Incontrast I see data is noisy like for example, one member's anxiety_score,depression_score,stress_level are 4,4,5 respectively. If we feed raw data with less variance model will not learn patterns correctly and might show high accuracy score during training, which is incorrect.
-    - Mental health risks are rarely the result of a single isolated factor, but rather combinations of lifestyle and environment. So feature enginnering is an important step
+    - This UseCase is on mental illness. I don't see any missing medical/ clinical information for each patient in the given dataset. This is good in one way that I don't need to  use mean/median/mode or any other technique to fill-in the NULLS. The medical/ clinical factors are very specific to a person and should not be generalized. 
+    - In contrast, I see data is noisy, for example, one member's anxiety_score, depression_score, stress_level are 4, 4, 5 respectively. If we feed raw data with less variance, the model will not learn patterns correctly and might show high accuracy score during training, which is incorrect.
+    - Mental health risks are rarely the result of a single isolated factor, but rather combinations of lifestyle and environment. So, feature engineering is an important step.
     - Transforming this raw data into meaningful features highlights hidden patterns, model accuracy, and reduces dimensionality so machine learning algorithms can better capture complex psychological and lifestyle interactions.
-    - Generating new features ( derived columns/feature ) uncover hidden correlations that raw features miss.
-    - Engineer features that highlight anomalies (like combining multiple high stress and anxiety indicators) to help models better delineate at-risk individuals.
-    - Data skewness observed. This needs to be handled by logrithmic transformation before feeding into an algorithm.
+    - Generating new features (derived columns/feature) uncovers hidden correlations that raw features miss.
+    - Engineering the features that highlight anomalies (like combining multiple high stress and anxiety indicators) helps models better delineate at-risk individuals.
+    - Data skewness observed. This needs to be handled by logarithmic transformation before feeding into an algorithm.
     - Target class imbalance observed. Use/choose proper algorithm.
-    - PCA analysis indicates both categorical & numerical features play important role
+    - PCA analysis indicates both categorical & numerical features play an important role.
 
 **Phase - MODELLING**
 
@@ -70,14 +70,15 @@ Explanation of Few Metrics that I will be using to evaluate the model performanc
 
     1. Recall - Use Recall when the cost of a false negative is high (e.g., medical diagnosis or fraud detection, where missing a sick patient or a fraudulent charge is dangerous)
     2. Precision -  when the cost of a false positive is high (e.g., spam filters, where marking a good email as spam is bad).
-    3. F1-score - Use F1 Score when you need a balance between precision and recall, particularly when dealing with skewed class distributions
+    3. F1-score - Use F1 Score when you need a balance between precision and recall, particularly when dealing with skewed class distributions.
     4. Accuracy - Use Accuracy when your dataset has a balanced distribution of classes and false positives/false negatives carry similar weight.
 
-As my use case is from HealthCare domain to identify patients with high/medium/risk , my goal is to improve on recall at the cost of precision. This will ensure my model does not miss out patients who are at high to medium , or even at low risk. **If I  missout to catch a low risk patients today, he/she might develop more illness and transion to medium to high risk.** Hence identifying patients with potential RISK **at earliy stage** will help doctors to start proper treatments at early stage.  
+As my use case is from HealthCare domain to identify patients with high/medium/low risk , my goal is to improve on recall at the cost of precision. This will ensure my model does not miss out patients who are at high to medium , or even at low risk. **If I  missout to catch a low risk patients today, he/she might develop more illness and transition from medium to high risk.**
+Hence identifying patients with potential RISK **at early stage** will help doctors to start proper treatments at early stage.  
 
 To find initial base model I used four classification algorithms, namely LogisticRegression,DecisionTree, KNearestNeighbor, SupportVectorMachine
 
-    - Out of 4 classifiers, the performance & other metrics are  poor for KNN/DecisionTree/SVM(refer my notebook). 
+    - Out of 4 classifiers, the performance & other metrics are  poor for KNN/DecisionTree/SVM (refer to my notebook). 
     - Hence, from overall performace(Train/Test time) and recall/precision/F1-score perspective I will take **LogisticRegression as my base model** & look for other algorithm that can handle class imbalance & non linear relationships in a better way.  
 
 **LogisticRegression Classification Report(Base Model): without class weight**
@@ -92,9 +93,12 @@ To find initial base model I used four classification algorithms, namely Logisti
                     macro avg      0.62      0.53      0.55      5000
                     weighted avg   0.61      0.60      0.59      5000
 
-This indcates recall for **high_risk class is very low(0.3)**. Even the accuracy score is 0.6. For this Use Case I need to improve the recall score
+This indcates recall for **high_risk class is very low(0.3)**. Even the accuracy score is 0.6. For this Use Case I need to improve the recall score.
 
-***Use robust algorithms to compare if those produce better result compared to BASE model***
+**Focus areas to achieve the above objective:**
+
+***1. Use robust algorithms to compare if those produce better result compared to BASE model***
+***2. Figureout ways to handle class imbalance***
 
 Following algorithms compared with Base Model
 
@@ -106,7 +110,7 @@ Following algorithms compared with Base Model
 
 - Create WEIGHTED_SAMPLE_CLASS to handle - HIGH_RISK(most imbalanced class in dataset) & LOW_RISK (moderately imbalance). This is necessary to handle class imbalance found in  EDA phase  
 
-**WEIGHTED_SAMPLE_CLASS approach has handled class imbalance of HIGH_RISK & LOW_RISK classes which has improved the Recall score. This was needed to make sure I don't miss any HIGH and LOW RISK patient**
+**WEIGHTED_SAMPLE_CLASS approach has handled class imbalance of HIGH_RISK & LOW_RISK classes which has improved the Recall score. This was needed to make sure I reduce missing out  HIGH and LOW RISK patients.**
 
 **Metrics after applying WEIGHTED_SAMPLE_CLASS - Result & Analysis**
 
@@ -143,11 +147,11 @@ Classification Report:
     - With weighted_samlple class high_risk & low_risk class **recall scores improved significantly for LogisticRegression & XGBoost**.
 
 
-**Confusion Matrix - Result & analysys**
+**Confusion Matrix - Result & analysis**
 
     - With CLASS_SAMPLE_WEIGHT the low & high risk prediction number has improved a lot for XGBoost & LogisticRegression
 
-    Example : The output under 'Confusion Matrix Comparison on base pipelines before applying gridsearch optimization'  section in indicates 
+    Example : The output under 'Confusion Matrix Comparison on base pipelines before applying gridsearch optimization'  section indicates 
 
     XGBoost shows a balanced performance compared to RandomForest & LogisticRegression. It has a slightly better True Positive count for Low Risk than Logistic Regression and better performance for High Risk compared to Random Forest. The Medium Risk class remains challenging, with a substantial portion misclassified. 
 
@@ -181,7 +185,7 @@ Best parameters for XGBoost: {'model__subsample': 0.8, 'model__sample_weight': N
 
 - Data Weights
 
-    model__sample_weight: None — Treats all training rows with equal importance. No special class balancing or custom weight scaling is applied during trainin
+    model__sample_weight: None — Treats all training rows with equal importance. No special class balancing or custom weight scaling is applied during training.
 
 
 
@@ -199,7 +203,7 @@ Why Adjust the Threshold?
 
     Threshold (< 0.5): Makes the model loose. It **catches more true items (higher recall) but creates more false alarms (lower precision)**. Example: Use this for medical tests where missing a disease is dangerous.
 
-In my Use Case I need higher recall for "high & low risk" patient categories. So this validation targets to findout best Threshold at which the model should operate.  
+In my Use Case I need higher recall for "high & low risk" patient categories. So this validation targets to find out best Threshold at which the model should operate.  
 
     - XGBoost demonstrates a **good balance** between recall and precision, especially when optimizing for F1-score **across different classes**. It generally provides competitive performance compared to other two models
 
@@ -216,7 +220,7 @@ In my Use Case I need higher recall for "high & low risk" patient categories. So
 
 **Feature importance comparison of LogisticRegression/RandomForest/Xgboost - Result & Analysis**
 
-    - The plot indicates RandomForest rely mostly on 2 features active_screen_ratio and protective_buffer_score. This might create problem as its NOT puting weightage on other paramaters.
+    - The plot indicates RandomForest relies mostly on 2 features - active_screen_ratio and protective_buffer_score. This might create problem as its NOT puting weightage on other paramaters.
 
     - LogisticRegression & XGBoost uses more features to make predictions, which is good.
     - Out of LogisticRegression & XGBoost, **XGBoost** uses more features and more evenly distributes weightage across different features.
@@ -225,17 +229,19 @@ In my Use Case I need higher recall for "high & low risk" patient categories. So
 **Neural Network - Result & Analysis-->> Reference notebook : analysis_with_feature_engg_NeuralNetwork.ipynb**
 
 Classification Report:
-               precision    recall  f1-score   support
 
-    Low Risk       0.66      0.53      0.59      1871
- Medium Risk       0.56      0.67      0.61      2365
-   High Risk       0.48      0.42      0.45       764
 
-This Metrics are close to LogisticRegression/XGBoost  but NOT better. So **Neural Network didn't add any extra value.**
+                        precision    recall  f1-score   support
+
+            Low Risk       0.66      0.53      0.59      1871
+            Medium Risk    0.56      0.67      0.61      2365
+            High Risk      0.48      0.42      0.45       764
+
+This Metrics are close to LogisticRegression/XGBoost as shown above but NOT better. So **Neural Network didn't add any extra value.**
 
 **Testing with UNSEEN  SYNTHETIC data - Using the saved tuned models -->> Reference notebook : TestSavedModel.ipynb**
 
-    - I see the the performace has degraded. Need to see why? 
+    - I see the performace has degraded. Need to see why? 
     - With synthetic data max recall_score is < 0.423 which is way less than untuned XGBoost/LogisticRegression model. 
 
 **SYNTHETIC DATA quality Analysis**
@@ -243,7 +249,7 @@ This Metrics are close to LogisticRegression/XGBoost  but NOT better. So **Neura
     - Kolmogorov-Smirnov (KS-test) indicates: 15 out of 21 numerical columns show a significant difference in distribution between original and synthetic data (p < 0.05).
     This suggests that the synthetic data's ***distributions for these columns are statistically different from the original data, which can impact model performance.***
     - NULL HYPOTHESIS testing
-    15 out of 21 columns have p-values of 0.0000, strongly **rejecting the null hypothesis that their distributions are the same**
+    15 out of 21 columns have p-values of 0.0000, strongly rejecting the null hypothesis that their distributions are the same
 
 ***Outcome***
     - Try different ways to generate SYNTHETIC data as next step/phase
@@ -283,10 +289,10 @@ Considering the following factors
 Actionable Items :
 
     1. Analyse which other Clinical Assessment, Diagnostic Criteria, Identifying Triggers can be used as additional input features to identify mental risk factors accurately. 
-    2. Talk to healthcare domain expert & get more insights on clinical data.This will help in generating synthetic data with proper distribution. My data generation technique didn't produce good reliable data for testing.
-    3. Discuss with domain experts/ healthcare providers to see how/from where I can get real data
-    4. When I get access to real data stratetize how to  handle tokenized PI/SPI data elements, as appropriate.  
-    5. Additional Feature Engineering Techniques, if needed based on domain experts'feedback,  to Enhance Class Separation
+    2. Talk to a healthcare domain expert & get more insights on clinical data. This will help in generating synthetic data with proper distribution. My data generation technique didn't produce good reliable data for testing.
+    3. Discuss with domain experts/ healthcare providers to see how/from where I can get real data.
+    4. When I get access to real data, strategize how to handle tokenized PI/SPI data elements, as appropriate.  
+    5. Additional Feature Engineering Techniques, if needed based on domain experts'feedback, to Enhance Class Separation
     6. Interaction Features
 
 # Outline of project
