@@ -113,27 +113,30 @@ Following algorithms compared with Base Model
 ***LogisticRegression***
 
 Classification Report:
-              precision    recall  f1-score   support
 
-    Low Risk       0.62      0.67      0.64      1871
- Medium Risk       0.57      0.38      0.46      2365
-   High Risk       0.38      0.70      0.49       764
+                                precision    recall  f1-score   support
+
+                    Low Risk       0.62      0.67      0.64      1871
+                    Medium Risk    0.57      0.38      0.46      2365
+                    High Risk      0.38      0.70      0.49       764
 
 ***RandomForest***
 Classification Report:
-              precision    recall  f1-score   support
 
-    Low Risk      0.65      0.57      0.61      1871
- Medium Risk      0.56      0.73      0.63      2365
-   High Risk      0.61      0.19      0.29       764
+                                precision    recall  f1-score   support
+
+                    Low Risk      0.65      0.57      0.61      1871
+                    Medium Risk   0.56      0.73      0.63      2365
+                    High Risk     0.61      0.19      0.29       764
 
 ***XGBoost***
 Classification Report:
-              precision    recall  f1-score   support
 
-    Low Risk      0.62      0.68      0.65      1871
-  Medium Risk     0.60      0.43      0.50      2365
-    High Risk     0.41      0.65      0.50       764
+                                precision    recall  f1-score   support
+
+                    Low Risk      0.62      0.68      0.65      1871
+                    Medium Risk   0.60      0.43      0.50      2365
+                    High Risk     0.41      0.65      0.50       764
 
 
 ***outcome:***
