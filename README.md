@@ -115,7 +115,6 @@ Following algorithms compared with Base Model
 **Metrics after applying WEIGHTED_SAMPLE_CLASS - Result & Analysis**
 
 ***LogisticRegression***
-
 Classification Report:
 
                                 precision    recall  f1-score   support
@@ -310,7 +309,7 @@ Actionable Items :
 ├── saved_model/                    # Hyperparameter tuned model files saved for any future reference
 ├── data/                           # Source datafiles(Kaggel) for analysis/modeling  & Unseen synthetic data for testing the model  
 ├── src/                            # Notebooks: 1. (EDA + Base models + RandomForest+XGBoost) 2. Test saved models with unseen synthetic data 3. Neural Network
-│   ├── src_synthetic_data_code/         # One python(.py)-Generate synthetic data 
+│   ├── src_synthetic_data_code/    # One python(.py)-Generate synthetic data 
 └── README.md       # Project overview
 ```
 
