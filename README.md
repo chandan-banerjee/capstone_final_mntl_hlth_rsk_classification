@@ -306,7 +306,7 @@ Actionable Items :
 
 ```text
 .
-├── saved_model/                    # Hyperparameter tuned model files saved for any future reference
+├── saved_model/                    # Hyperparameter tuned model files saved for any future reference. Due to flie size restriction, Github is not allowing me to upload RandomForest saved model. 
 ├── data/                           # Source datafiles(Kaggel) for analysis/modeling  & Unseen synthetic data for testing the model  
 ├── src/                            # Notebooks: 1. (EDA + Base models + RandomForest+XGBoost) 2. Test saved models with unseen synthetic data 3. Neural Network
 │   ├── src_synthetic_data_code/    # One python(.py)-Generate synthetic data 
